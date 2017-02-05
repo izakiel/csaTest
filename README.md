@@ -40,6 +40,7 @@ code (35 to 40s) it's 10 times faster!
 it's 25% faster in average than original implementation with less than 4s.
 - To Solve the Limitation 3 i've added a change time to early arrival 
 and test if user have enough time to arrive to next connection departure.
+TWith the limitation 3 implementation the bench take less than 3,4s.
 
 ## Optimization
 - The code could be optimized using Parallel Streams on CSA computation.

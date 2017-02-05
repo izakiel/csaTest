@@ -21,11 +21,11 @@ public class CSA {
         this.timetable = timetable;
     }
 
-    private void main_loop(int arrival_station) {
+    private void main_loop(int arrival_station, int change_time) {
         int earliest = Integer.MAX_VALUE;
 
         for (final Connection connection: timetable.connections) {
-            if (connection.departureTimestamp >= earliest_arrival[connection.departureStation] + connection.departureChangeTimeInMs &&
+            if (connection.departureTimestamp >= earliest_arrival[connection.departureStation] + change_time &&
                     connection.arrivalTimestamp < earliest_arrival[connection.arrivalStation]) {
                 earliest_arrival[connection.arrivalStation] = connection.arrivalTimestamp;
                 in_connection[connection.arrivalStation] = connection;
@@ -72,7 +72,7 @@ public class CSA {
         earliest_arrival[departure_station] = departure_time;
 
         if (departure_station <= MAX_STATIONS && arrival_station <= MAX_STATIONS) {
-            main_loop(arrival_station);
+            main_loop(arrival_station, change_time);
         }
         //print_result(arrival_station);
     }
